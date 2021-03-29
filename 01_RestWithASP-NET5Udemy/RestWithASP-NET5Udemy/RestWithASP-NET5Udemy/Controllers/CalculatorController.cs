@@ -12,9 +12,9 @@ namespace RestWithASP_NET5Udemy.Controllers
     public class CalculatorController : ControllerBase
     {
        
-        private readonly ILogger<CalculatorController> _logger;
+        private readonly ILogger<PersonController> _logger;
 
-        public CalculatorController(ILogger<CalculatorController> logger)
+        public CalculatorController(ILogger<PersonController> logger)
         {
             _logger = logger;
         }
