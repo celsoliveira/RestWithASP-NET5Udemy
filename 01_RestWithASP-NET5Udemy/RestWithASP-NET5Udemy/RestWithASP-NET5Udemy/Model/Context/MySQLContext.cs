@@ -11,7 +11,7 @@ namespace RestWithASP_NET5Udemy.Model.Context
 
         }
 
-        public MySQLContext(DbContextOptions<MySQLContext> options) : base()
+        public MySQLContext(DbContextOptions<MySQLContext> options) : base(options)
         {
 
         }
