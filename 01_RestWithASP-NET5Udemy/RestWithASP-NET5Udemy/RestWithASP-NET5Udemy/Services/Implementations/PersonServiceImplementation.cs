@@ -49,8 +49,16 @@ namespace RestWithASP_NET5Udemy.Services.Implementations
             var result = _context.Persons.SingleOrDefault(p => p.Id.Equals(id));
             if (result != null)
             {
-                _context.Persons.Remove(result);
-                _context.SaveChanges();
+                try
+                {
+                    _context.Persons.Remove(result);
+                    _context.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                
             }
 
         }
@@ -58,12 +66,13 @@ namespace RestWithASP_NET5Udemy.Services.Implementations
         
         public Person Update(Person person)
         {
+
             if (!Exists(person.Id)) 
             {
                 return new Person();
             }
 
-            var result = _context.Persons.Any(p => p.Id.Equals(person.Id));
+            var result = _context.Persons.SingleOrDefault(p => p.Id.Equals(person.Id));
 
             if (result != null)
             {
@@ -84,7 +93,7 @@ namespace RestWithASP_NET5Udemy.Services.Implementations
 
         private bool Exists(long id)
         {
-            return _context.Persons.Any(p => p.Id.Equals(id))
+            return _context.Persons.Any(p => p.Id.Equals(id));
         }
     }
 }
