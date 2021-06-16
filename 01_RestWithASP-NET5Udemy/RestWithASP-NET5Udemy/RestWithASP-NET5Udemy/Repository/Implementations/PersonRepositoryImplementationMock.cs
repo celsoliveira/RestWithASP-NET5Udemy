@@ -1,13 +1,11 @@
 ﻿using RestWithASP_NET5Udemy.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 
-namespace RestWithASP_NET5Udemy.Services.Implementations
+namespace RestWithASP_NET5Udemy.Repository.Implementations
 {
-    public class PersonServiceImplementationMock : IPersonService
+    public class PersonRepositoryImplementationMock : IPersonRepository
     {
 
         private volatile int count;
@@ -68,6 +66,11 @@ namespace RestWithASP_NET5Udemy.Services.Implementations
         private long incrementAndGet()
         {
             return Interlocked.Increment(ref count);
+        }
+
+        public bool Exists(long id)
+        {
+            return true;
         }
     }
 }
